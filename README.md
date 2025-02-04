@@ -5,7 +5,7 @@
 A real-time chat application built with **React.js**, **Keycloak** for authentication, and **Hugging Face Inference API** for AI-powered responses.
 
 ## 📌 Features
-- **User Authentication**: Managed via **Keycloak**.
+- **User Authentication**: Managed via **Keycloak 16.1.1**.
 - **AI Chatbot**: Uses Hugging Face **google/gemma-2-2b-it** model for responses.
 - **Session Management**: Implements refresh token mechanism.
 - **Mobile-Friendly UI**: Responsive design with a sidebar for mobile users.
