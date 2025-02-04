@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import LeftNav from "../components/LeftNav";
 import ChatContainer from "../components/ChatContainer";
 import Mobile from "../components/Mobile";
-import { initKeyCloak } from "../utils/keycloak";
+
 
 
 function Home() {

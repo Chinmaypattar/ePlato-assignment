@@ -16,17 +16,18 @@ function ChatContainer() {
     chatValue,
     setChatValue,
     handleSend,
-    handleKeyPress,
+    setIsAuthenticated
   } = useContext(ContextApp);
 
   const [showModal, setShowModal] = useState(false);
   const [scenarioType, setScenarioType] = useState(" ")
 
   const navigate = useNavigate();
-  const handleClose = () => {
+  const handleClose = async() => {
 
     setShowModal(false);
-    logout(navigate)
+    setIsAuthenticated(false)
+    await logout(navigate)
     // Redirect to login page or handle the session expiration logic here
   }
 
@@ -81,7 +82,7 @@ function ChatContainer() {
       }
     }
   
-    type === "key" ? handleKeyPress() : handleSend();
+     handleSend();
   };
 
   return (

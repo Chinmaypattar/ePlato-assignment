@@ -7,8 +7,14 @@ import { ContextApp } from "../utils/Context";
 import { logout } from "../utils/keycloak";
 import { useNavigate } from "react-router-dom";
 function Mobile() {
-  const { Mobile, setMobile } = useContext(ContextApp);
+  const { Mobile, setMobile,setIsAuthenticated } = useContext(ContextApp);
   const navigate = useNavigate();
+
+  
+  const handleLogout = async () => {
+    setIsAuthenticated(false)
+    await logout(navigate);
+};
   return (
     <div className="absolute left-0 top-0 w-full z-50  bg-black/40 flex justify-between items-start">
       <div
@@ -53,7 +59,7 @@ function Mobile() {
             </span>
           </span>
           <button
-            onClick={() => logout(navigate)}
+            onClick={() => handleLogout(navigate)}
             className="flex items-center gap-2 bg-red-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-red-600 transition duration-200"
           >
             <FiLogOut size={20} /> {/* Logout Icon */}

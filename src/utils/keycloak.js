@@ -108,13 +108,18 @@ export const logout =async (navigate) => {
     }
 };
 
-export const getRefreshToken =async()=>{
-    if(kc){
-        kc.updateToken(10).then(()=>{
-            return true
-        })
+export const getRefreshToken = async () => {
+    if (kc) {
+        try {
+            await kc.updateToken(10);
+            return true;
+        } catch (error) {
+            console.error("Token refresh failed:", error);
+            return false;
+        }
     }
-}
+    return false;
+};
 
 
 // Function to get the current Keycloak instance

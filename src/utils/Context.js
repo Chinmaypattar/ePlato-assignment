@@ -12,6 +12,7 @@ const AppContext = ({ children }) => {
       isBot: true,
     },
   ]);
+  const [isAuntenticated,setIsAuthenticated]= useState(false)
  
 
   // button Click function
@@ -27,12 +28,7 @@ const AppContext = ({ children }) => {
     ]);
   };
 
-  // Enter Click function
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleSend();
-    }
-  };
+
 
   // Query Click function
 
@@ -48,7 +44,9 @@ const AppContext = ({ children }) => {
         handleSend,
         message,
         
-        handleKeyPress,
+
+        setIsAuthenticated,
+        isAuntenticated
 
       }}
     >

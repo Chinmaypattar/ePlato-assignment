@@ -7,9 +7,13 @@ import { ContextApp } from "../utils/Context";
 import {  logout } from "../utils/keycloak";
 import { useNavigate } from 'react-router-dom';
 function LeftNav() {
-  const { setShowSlide, showSlide,  } = useContext(ContextApp);
+  const { setShowSlide, showSlide,setIsAuthenticated  } = useContext(ContextApp);
   const navigate = useNavigate();
 
+  const handleLogout = async () => {
+    setIsAuthenticated(false)
+    await logout(navigate);
+};
 
   return (
     // top section
@@ -63,7 +67,7 @@ function LeftNav() {
           </span>
         </span>
         <button
-          onClick={() => logout(navigate)}
+          onClick={() => handleLogout(navigate)}
           className="flex items-center gap-2 bg-red-500 text-white font-medium py-2 px-4 rounded-lg hover:bg-red-600 transition duration-200"
         >
           <FiLogOut size={20} /> {/* Logout Icon */}
