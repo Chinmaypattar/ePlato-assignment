@@ -1,53 +1,16 @@
 import Keycloak from 'keycloak-js';
 
 
-// export const initKeyCloak =()=>{
-//     if (kc) return;
-//     let initOptions = {
-//         url: 'http://localhost:8080/auth',
-//         realm: 'master',
-//         clientId: 'react-client',
-//       }
-      
-//        kc = new Keycloak(initOptions);
-//     kc.init({
-//         onLoad: 'login-required',  // Redirects to login if not authenticated
-//         checkLoginIframe: true,   // Disable iframe login check to avoid timeout issues
-//       }).then((auth) => {
-//         if (!auth) {
-//           console.log('Not authenticated')
-//         //   window.location.reload();
-//         } else {
-//           /* Remove below logs if you are using this on production */
-//           console.info("Authenticated");
-//           console.log('auth', auth)
-//           console.log('Keycloak', kc)
-//           console.log('Access Token', kc.token)
-      
-//           /* http client will use this header in every request it sends */
-         
-//           kc.onTokenExpired = () => {
-//             console.log('token expired')
-//           }
-//         }
-//       }, (err) => {
-//         /* Notify the user if necessary */
-//         console.error("Authentication Failed",err);
-//       });
-// }
-
-
-
-
 let kc = null;
 
 export const initKeyCloak = () => {
+    console.log("ENV",process.env.REACT_APP_KEYCLOAK_CLIENT_ID)
     if (kc) return Promise.resolve(kc);
 
     let initOptions = {
-        url: 'http://localhost:8080/auth',
-        realm: 'master',
-        clientId: 'react-client',
+        url: process.env.REACT_APP_KEYCLOAK_URL,
+        realm: process.env.REACT_APP_KEYCLOAK_REALM,
+        clientId: process.env.REACT_APP_KEYCLOAK_CLIENT_ID,
     };
 
     kc = new Keycloak(initOptions);
@@ -73,17 +36,6 @@ export const login = () => {
     }
 };
 
-// Function to logout
-// export const logout = (navigate) => {
-//     if (kc) {
-//         kc.logout().then(() => {
-//             navigate("/"); // Redirect to login after logout
-//         });
-//     }else{
-//         console.log("logout err")
-//     }
-// };
-
 
 export const logout =async (navigate) => {
     if (kc) {
@@ -106,6 +58,7 @@ export const logout =async (navigate) => {
             }
         });
     }
+    localStorage.clear()
 };
 
 export const getRefreshToken = async () => {

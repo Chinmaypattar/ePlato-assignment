@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { LuPanelLeftClose } from "react-icons/lu";
 import { FiUser, FiLogOut } from "react-icons/fi";
+import { FaUserCircle } from "react-icons/fa";
 import { SlOptions } from "react-icons/sl";
 import { ContextApp } from "../utils/Context";
 import {  logout } from "../utils/keycloak";
@@ -55,11 +56,12 @@ function LeftNav() {
         </span>
         <span className="rounded w-full py-2 px-2 text-xs flex gap-1 items-center justify-between cursor-pointer hover:bg-gray-800 transition-all duration-300" >
           <span className="flex gap-2 items-center justify-center text-sm font-bold">
-            <img
+            {/* <img
               src="/user.enc"
               alt="user"
               className="w-8 h-8 object-cover rounded-sm"
-            />
+            /> */}
+            <FaUserCircle size={30} />
             Chinmay
           </span>
           <span className="rounded-md  px-1.5 py-0.5 text-xs font-medium uppercase text-gray-500" >

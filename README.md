@@ -34,9 +34,9 @@ npm install
 Create a `.env` file in the root directory and add:
 ```sh
 REACT_APP_HF_API_KEY=your_huggingface_api_key
-REACT_APP_KEYCLOAK_URL=http://localhost:8080
-tenant=your_tenant
-client_id=your_client_id
+REACT_APP_KEYCLOAK_URL = http://localhost:8080/auth
+REACT_APP_KEYCLOAK_REALM =master
+REACT_APP_KEYCLOAK_CLIENT_ID=react-client
 ```
 
 ### 4️⃣ Run Keycloak in Docker

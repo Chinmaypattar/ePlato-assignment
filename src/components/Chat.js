@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ContextApp } from "../utils/Context";
+import { FaUserCircle } from "react-icons/fa";
 
 function Chat() {
   const { message, msgEnd } = useContext(ContextApp);
@@ -12,14 +13,21 @@ function Chat() {
             className={
               msg.isBot
                 ? "flex items-start justify-center gap-2 lg:gap-5 my-2 bg-gray-800/80 p-3 rounded-md "
-                : "flex items-start justify-center gap-2 lg:gap-5 my-2 p-3"
+                : "flex self-end justify-center gap-2 lg:gap-5 my-2 p-3 bg-gray-800/80 p-3 rounded-md"
             }
           >
-            <img
-              src={msg.isBot ? "/icon.png" : "/user.enc"}
-              alt="user"
-              className="w-10 h-10 rounded object-cover"
-            />
+
+            {msg.isBot ? (
+               <img
+               src={"/icon.png"}
+               alt="user"
+               className="w-10 h-10 rounded object-cover"
+             />
+            
+            ) : (
+              <FaUserCircle size={25} color="#fff" />
+            )}
+
             <p className="text-white text-[15px]">{msg?.text}</p>
           </span>
         ))}
